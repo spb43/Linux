@@ -1,0 +1,37 @@
+---------Data types-----------------------
+#constant		--snippet const
+#variable		--snippet var
+#signal			--snippet sig
+TYPE:                     
+#type			--snippet type
+#physical type		--snippet ftype
+#enumerated type	--snippet etype
+#subtype		--snippet stype
+#array			--snippet atype
+#record			--snippet rtype
+#access			--snippet actype
+
+--------Operators-------------------------
+#if			--snippet if
+#if-else		--snippet ife 
+#elsif			--snippet els
+#CASE			--snippet case
+#LOOP			--snippet loop
+#exit loop operato	--snippet ext
+#next loop operator	--snippet nxt
+#while loop		--snippet while
+#for loop		--snippet for 
+
+-------Structure of declarations----------
+#entity			--snippet ent 
+#libraries		--snippet lib
+#package declaraion	--snippet pack
+#packge body decl	--snippet packb
+#PROCESS		--snippet process
+#paralel coditions	--snippet pc
+#select			--snippet select
+#component		--snippet comp
+#port map		--snippet pmap
+#GENERATE		--snippet gen
+#PROCEDURE		--snippet proc
+

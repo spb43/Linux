@@ -1,0 +1,200 @@
+#######################################################################
+#
+#DATA TYPES
+#
+#######################################################################
+
+#constant
+snippet const
+	constant ${1:name}: ${2:"type"} := ${3:"Expression"};
+#variable
+snippet var
+	variable ${1:name}: ${2:"type"} := ${3:"Expression"};
+#signal
+snippet sig
+	signal ${1:"identitier"}: ${2:"type"};
+#type
+snippet type
+	type ${1:"name"} is ${2:"type_difinition"}
+#Physical type
+snippet ftype
+	type ${1:"name"} is range ${2:"simpl_expr"} ${3:"to/downto"} ${4:"simpl_expr"}
+		units
+			${5:"list_of_units"};
+		
+		end units ${1:"name"};
+#Enumerated type
+snippet etype
+	type ${1:"name"} is (${2:"val_1"},${3:"val_2"},${4:"val_3"});
+#subtype
+snippet stype
+	subtype ${1:"name"} is ${2:"name_of_base_type"} range ${3:"expr_1"} ${4:"to/downto"} ${5:"expr_2"};
+#arrays
+snippet atype
+	type ${1:"name"} is array ${2:"expr_1"} ${3:"to/downto"} ${4:"expr_2"} of ${5:"type"};
+#Records
+snippet	rtype
+	type ${1:"name"} is record
+		${2:"name"} : ${3:"type"};
+		${4:"name"} : ${5:"type"};
+	end record ${1:"name"};
+#Access
+snippet actype
+	type ${1:"name"} is access ${2:"sybtype_ind"};
+
+###########################################################################################################
+#
+#OPERATORS
+#
+###########################################################################################################
+
+#if
+snippet if
+	if (${1:"boolean_expr"}) then
+		{
+			${2:"sq_statements"}
+		}
+	end if;
+#if-else
+snippet ife 
+	if (${1:"boolean_expr"}) then
+
+	{
+	        	${2:"sq_statements"};
+	}
+	else 
+
+	{
+			${3:"sq_statements"};
+		}
+	end if; 
+#elsif 
+snippet els
+	if (${1:"boolean_expr"}) then
+		{
+	                ${2:"sq_statements"};
+	        }
+	elsif(${3:"boolean_expr"}) then
+		{
+			${4:"sq_statements"};
+		}
+	end if; 
+#CASE
+snippet case
+	case ${1:"expr"} is
+		when ${2:"choise_0"} => ${3:"sq_statement"}  <= ${4:"val"};
+		when ${5:"choise_1"} => ${3:"sq_statement"}  <= ${6:"val"};
+		when others => $3 <= '${7:"val"}';
+	end case;
+#LOOP
+snippet loop
+	${1:"loop_lbl"}:loop
+			{
+				${2:"sq_statement"};
+			}
+	end loop $1;
+#exit loop operator
+snippet ext
+	exit ${1:"loop_lbl"} when ${2:"boolean_expr"};
+#next loop operator
+snippet nxt
+	next ${1:"loop_lbl"} when ${2:"boolean_expr"};
+#while loop
+snippet while
+	${1:"loop_lbl"}:while (${2:"condition"}) loop
+			{
+				${3:"sq_statement"};
+			}
+	end loop $1;
+#for loop
+snippet for 
+	${1:"loop_lbl"}:for ${2:"indent"} in ${3:"expr_1"} ${4:"to/downto"} ${5:"expr_2"}
+			loop
+			{
+				${6:"sq_statement"};
+			}
+	end loop $1;
+#########################################################################################
+#
+#Structure of declarations
+#
+#########################################################################################
+#entity
+snippet ent 
+	entity ${1:"name"} is
+		port(${2:"interface_list"});
+	end entity $1;
+	
+	architecture ${3:"name"} of $1 is
+		
+		begin
+		${4:"sq_statements"};
+	end arcitecture $3;
+#libraries
+snippet lib
+	library ieee;
+	use ieee.std_logic_1164.all;
+#package declaraion
+snippet pack
+	package ${1:"name"} is
+		{
+		${2:"package_decl_item"}
+		}
+	end package $1;
+#packge body declaration
+snippet packb
+	package body ${1:"name"} is
+		{
+			${2:"pack_body_decl_item"};
+		}
+	end package body $1;
+#PROCESS
+snippet process
+	${1:"proc_lbl"}:process(${2:"sens_list"})
+			begin
+				${3:"sq_statement"};
+	end process $1;
+#paralel coditions
+snippet pc
+	${1:"name"} <= ${2:"value"} when ${3:"boolean_expr"} else
+			<= ${4:"value"} when ${5:"boolean_expr"} else
+			<= ${6:"value"} when ${7:"boolean_expr"};
+#select
+snippet select
+	with ${1:"expr"} select 
+		${2:"name"} <= ${3:"val"} when ${4:"choise"};
+				${5:"val"} when ${6:"choise"};		
+				${7:"val"} when others;
+#component
+snippet comp
+	component ${1:"name"} is
+		port(${1:"list"});
+	end component $1;
+#port map
+snippet pmap
+	${1:"Inst_lbl"}: ${2:"name_comp"} 
+	port map(${3:"port_list"},
+		${4:"port_list"});
+#GENERATE
+snippet gen
+	${1:"group_lbl"}:for ${2:"index"} in ${3:"range"} generate
+	${4:"element lbl"}:${5:"component_name"}
+	port map(${6:"port_list"},
+	                ${7:"port_list"})
+	end generate $1;
+#PROCEDURE
+snippet proc
+	procedure ${1:"name"} is
+	 ${2:"declarations"}
+	 begin
+	 	${3:"sq_statements"};
+	end procedure $1;
+#######################################################################################
+#
+#FILES
+#
+#######################################################################################
+
+
+
+
